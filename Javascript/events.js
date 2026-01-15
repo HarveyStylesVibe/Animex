@@ -19,7 +19,7 @@ const heroNext = document.getElementById("heroNext");
 ======================= */
 function removeLoadingCards(container) {
   const cards = container.querySelectorAll(".anime-card");
-  cards.forEach(card => {
+  cards.forEach((card) => {
     // loading cards do NOT contain images
     if (!card.querySelector("img")) {
       card.remove();
@@ -100,7 +100,9 @@ export function setupSearch(animeListObj) {
   const heroSection = document.querySelector(".hero-section");
   const trendingSection = document.querySelector(".trending-section");
   const searchSection = document.querySelector(".search-section");
-  const searchCardsContainer = document.querySelector(".search-cards-container");
+  const searchCardsContainer = document.querySelector(
+    ".search-cards-container"
+  );
   const searchQuerySpan = document.getElementById("search-query");
 
   // create / get search load more button
@@ -223,9 +225,7 @@ function appendSearchCards(animeArray, container, animeListObj) {
       <div class="anime-genre">${anime.type ?? "N/A"}</div>
     `;
 
-    card.addEventListener("click", () =>
-      updateHero(anime, animeListObj.list)
-    );
+    card.addEventListener("click", () => updateHero(anime, animeListObj.list));
 
     container.appendChild(card);
   });

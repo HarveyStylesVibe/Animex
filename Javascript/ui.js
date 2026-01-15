@@ -10,7 +10,7 @@ export const searchInput = document.querySelector(".search-bar");
 export function renderAnime(animeArray) {
   cardsContainer.innerHTML = "";
 
-  animeArray.forEach(anime => {
+  animeArray.forEach((anime) => {
     const newCard = document.createElement("div");
     newCard.classList.add("anime-card");
 
@@ -63,12 +63,11 @@ export function updateHero(anime, animeList) {
   heroBtn.onclick = () => console.log(`Watch Now clicked for: ${anime.title}`);
 
   // Update index
-  const index = animeList.findIndex(a => a.mal_id === anime.mal_id);
+  const index = animeList.findIndex((a) => a.mal_id === anime.mal_id);
   if (index !== -1) currentHeroIndex = index;
 }
 
 export { currentHeroIndex };
-
 
 export function renderLoadMoreLoading(container, count = 5) {
   for (let i = 0; i < count; i++) {
@@ -83,9 +82,8 @@ export function renderLoadMoreLoading(container, count = 5) {
   }
 }
 
-
 export function appendAnime(animeArray) {
-  animeArray.forEach(anime => {
+  animeArray.forEach((anime) => {
     const newCard = document.createElement("div");
     newCard.classList.add("anime-card");
 
@@ -104,11 +102,10 @@ export function appendAnime(animeArray) {
 function removeLoadingCards(container) {
   const loadingCards = container.querySelectorAll(".anime-card");
 
-  loadingCards.forEach(card => {
+  loadingCards.forEach((card) => {
     // loading cards have no <img>
     if (!card.querySelector("img")) {
       card.remove();
     }
   });
 }
-
