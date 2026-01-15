@@ -70,15 +70,33 @@ export function updateHero(anime, animeList) {
 export { currentHeroIndex };
 
 
-export function renderLoadMoreLoading(count = 5) {
+export function renderLoadMoreLoading(container, count = 5) {
   for (let i = 0; i < count; i++) {
     const loadingCard = document.createElement("div");
     loadingCard.classList.add("anime-card");
     loadingCard.innerHTML = `
       <div class="anime-image" style="background:#333;"></div>
-      <div class="anime-title" style="height:16px; background:#444; margin:10px; border-radius:4px;"></div>
-      <div class="anime-genre" style="height:12px; background:#555; margin:10px; border-radius:4px;"></div>
+      <div class="anime-title" style="height:16px; background:#444; margin:10px;"></div>
+      <div class="anime-genre" style="height:12px; background:#555; margin:10px;"></div>
     `;
-    cardsContainer.appendChild(loadingCard); // append instead of replace
+    container.appendChild(loadingCard);
   }
+}
+
+
+export function appendAnime(animeArray) {
+  animeArray.forEach(anime => {
+    const newCard = document.createElement("div");
+    newCard.classList.add("anime-card");
+
+    newCard.innerHTML = `
+      <div class="anime-image">
+        <img src="${anime.images.jpg.image_url}" alt="${anime.title}">
+      </div>
+      <div class="anime-title">${anime.title}</div>
+      <div class="anime-genre">${anime.type ?? "N/A"}</div>
+    `;
+
+    cardsContainer.appendChild(newCard);
+  });
 }
